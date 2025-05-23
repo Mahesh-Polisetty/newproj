@@ -1,92 +1,98 @@
 import React from 'react';
-import { Code, Database, Layout, Palette } from 'lucide-react';
+import { 
+  SiPython, SiJavascript, SiSpring, SiDjango, SiFlask, 
+  SiReact, SiNodedotjs, SiTensorflow, SiScikitlearn, SiPandas, 
+  SiTableau, SiGit, SiJenkins, SiMongodb, SiPostgresql, 
+  SiLinux, SiHtml5, SiCss3, SiTailwindcss, SiBootstrap
+} from 'react-icons/si';
+import { DiJava } from 'react-icons/di';
+import { FaDatabase } from 'react-icons/fa';
 
 const SkillsSection: React.FC = () => {
-  const skillCategories = [
+  const skills = [
     {
-      title: "Frontend Development",
-      icon: <Layout className="w-6 h-6 text-teal-400" />,
-      skills: [
-        { name: "HTML", proficiency: 95 },
-        { name: "CSS/SCSS", proficiency: 90 },
-        { name: "JavaScript", proficiency: 85 },
-        { name: "React", proficiency: 80 },
-        { name: "Tailwind CSS", proficiency: 90 }
+      category: "Languages",
+      items: [
+        { name: "Python", icon: <SiPython className="text-4xl hover:text-[#3776AB]" /> },
+        { name: "Java", icon: <DiJava className="text-4xl hover:text-[#007396]" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-4xl hover:text-[#F7DF1E]" /> },
+        { name: "HTML5", icon: <SiHtml5 className="text-4xl hover:text-[#E34F26]" /> },
+        { name: "CSS3", icon: <SiCss3 className="text-4xl hover:text-[#1572B6]" /> },
+        { name: "SQL", icon: <FaDatabase className="text-4xl hover:text-[#336791]" /> }
       ]
     },
     {
-      title: "Backend Development",
-      icon: <Database className="w-6 h-6 text-blue-400" />,
-      skills: [
-        { name: "Node.js", proficiency: 75 },
-        { name: "Express", proficiency: 70 },
-        { name: "MongoDB", proficiency: 65 },
-        { name: "REST API", proficiency: 80 }
+      category: "Frameworks & CSS",
+      items: [
+        { name: "Spring", icon: <SiSpring className="text-4xl hover:text-[#6DB33F]" /> },
+        { name: "Django", icon: <SiDjango className="text-4xl hover:text-[#092E20]" /> },
+        { name: "Flask", icon: <SiFlask className="text-4xl hover:text-[#000000]" /> },
+        { name: "React", icon: <SiReact className="text-4xl hover:text-[#61DAFB]" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="text-4xl hover:text-[#339933]" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-4xl hover:text-[#06B6D4]" /> },
+        { name: "Bootstrap", icon: <SiBootstrap className="text-4xl hover:text-[#7952B3]" /> }
       ]
     },
     {
-      title: "Design",
-      icon: <Palette className="w-6 h-6 text-purple-400" />,
-      skills: [
-        { name: "Figma", proficiency: 85 },
-        { name: "Photoshop", proficiency: 75 },
-        { name: "UI/UX", proficiency: 80 }
+      category: "ML & Data",
+      items: [
+        { name: "TensorFlow", icon: <SiTensorflow className="text-4xl hover:text-[#FF6F00]" /> },
+        { name: "Scikit-learn", icon: <SiScikitlearn className="text-4xl hover:text-[#F7931E]" /> },
+        { name: "Pandas", icon: <SiPandas className="text-4xl hover:text-[#150458]" /> },
+        { name: "Tableau", icon: <SiTableau className="text-4xl hover:text-[#E97627]" /> }
       ]
     },
     {
-      title: "Other Skills",
-      icon: <Code className="w-6 h-6 text-amber-400" />,
-      skills: [
-        { name: "Git", proficiency: 85 },
-        { name: "Responsive Design", proficiency: 95 },
-        { name: "Performance Optimization", proficiency: 80 }
+      category: "Tools",
+      items: [
+        { name: "Git", icon: <SiGit className="text-4xl hover:text-[#F05032]" /> },
+        { name: "Jenkins", icon: <SiJenkins className="text-4xl hover:text-[#D24939]" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-4xl hover:text-[#47A248]" /> },
+        { name: "PostgreSQL", icon: <SiPostgresql className="text-4xl hover:text-[#4169E1]" /> },
+        { name: "Linux", icon: <SiLinux className="text-4xl hover:text-[#FCC624]" /> }
       ]
     }
   ];
 
   return (
-    <section id="skills" className="py-24 bg-gray-800">
+    <section id="skills" className="py-32 bg-gray-900">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            My <span className="text-teal-400">Skills</span>
+            Technical <span className="text-teal-400">Skills</span>
           </h2>
           <div className="mt-2 h-1 w-20 bg-teal-500 mx-auto"></div>
-          <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-            I've developed a diverse skill set over the years. Here's an overview of my technical expertise
-            and proficiency levels.
-          </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <div 
-              key={index} 
-              className="bg-gray-900 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-fadeIn"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="flex items-center mb-6">
-                <div className="p-3 rounded-lg bg-gray-800 mr-4">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white">{category.title}</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-gray-400">{skill.proficiency}%</span>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+          {skills.map((section, index) => (
+            <div key={index} className="relative">
+              <div className="sticky top-24">
+                <h3 className="text-2xl font-semibold mb-8 text-gray-300 text-center">
+                  {section.category}
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+                  {section.items.map((skill, skillIndex) => (
+                    <div 
+                      key={skillIndex}
+                      className="group relative flex flex-col items-center"
+                    >
                       <div 
-                        className="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full"
-                        style={{ width: `${skill.proficiency}%` }}
-                      ></div>
+                        className="transform transition-all duration-500 ease-in-out
+                          text-gray-400 filter saturate-0 hover:saturate-100
+                          hover:scale-110 hover:rotate-3"
+                      >
+                        {skill.icon}
+                      </div>
+                      <span 
+                        className="mt-3 text-sm font-medium text-gray-500 group-hover:text-gray-300
+                          transition-colors duration-300"
+                      >
+                        {skill.name}
+                      </span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           ))}

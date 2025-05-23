@@ -11,7 +11,17 @@ export default {
         slideUp: 'slideUp 1s ease-in-out',
         slideRight: 'slideRight 1s ease-in-out',
         blob: 'blob 7s infinite',
-        typewriter: 'typewriter 3s steps(20) 1s 1 normal both, blink 1s steps(1) infinite',
+        typewriter: 'typing 0.5s ease-in-out, blink 1s ease-in-out infinite',
+      },
+      keyframes: {
+        typing: {
+          '0%': { width: '0' },
+          '100%': { width: '100%' }
+        },
+        blink: {
+          '0%, 100%': { borderColor: 'transparent' },
+          '50%': { borderColor: '#2dd4bf' }
+        }
       },
       transitionProperty: {
         'height': 'height',
