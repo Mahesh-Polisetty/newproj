@@ -37,15 +37,15 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <a 
-            href="#home" 
-            onClick={(e) => handleLinkClick(e, 'home')}
-            className="text-2xl font-bold text-white"
+        <div className="relative flex items-center justify-center py-2">
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden absolute left-0 text-white focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-teal-400">R</span>IEAD
-          </a>
-          
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {['home', 'about', 'skills', 'services', 'portfolio', 'contact'].map((item) => (
@@ -53,34 +53,28 @@ const Navbar: React.FC = () => {
                 key={item}
                 href={`#${item}`}
                 onClick={(e) => handleLinkClick(e, item)}
-                className="capitalize text-gray-300 hover:text-teal-400 transition-colors duration-300"
+                className="capitalize text-gray-300 hover:text-teal-400 transition-colors duration-300 text-lg font-medium tracking-wide hover:scale-105 transform"
               >
-                {item}
+                {item === 'services' ? 'Experience' : item === 'portfolio' ? 'Projects' : item}
               </a>
             ))}
           </div>
           
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+
         </div>
         
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-gray-800 mt-4 py-4 px-2 rounded-lg shadow-xl animate-fadeIn">
+          <div className="md:hidden bg-gray-800/95 backdrop-blur-sm mt-4 py-4 px-2 rounded-lg shadow-xl animate-fadeIn border border-gray-700/50">
             <div className="flex flex-col space-y-4">
               {['home', 'about', 'skills', 'services', 'portfolio', 'contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item}`}
                   onClick={(e) => handleLinkClick(e, item)}
-                  className="capitalize text-gray-300 hover:text-teal-400 transition-colors duration-300 px-4 py-2"
+                  className="capitalize text-gray-300 hover:text-teal-400 transition-colors duration-300 px-4 py-3 text-lg font-medium hover:bg-gray-700/50 rounded-md"
                 >
-                  {item}
+                  {item === 'services' ? 'Experience' : item === 'portfolio' ? 'Projects' : item}
                 </a>
               ))}
             </div>

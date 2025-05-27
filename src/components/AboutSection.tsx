@@ -6,25 +6,25 @@ const AboutSection: React.FC = () => {
 
   const stats = [
     { icon: <Award size={24} />, count: '2.5+', label: 'Years Experience' },
-    { icon: <BookOpen size={24} />, count: '8+', label: 'Major Projects' },
+    { icon: <BookOpen size={24} />, count: '8+', label: 'Academic Projects' },
     { icon: <Trophy size={24} />, count: '3.8', label: 'GPA' },
   ];
 
   return (
-    <section id="about" className="py-24 bg-gray-900">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
-          About <span className="text-teal-400">Me</span>
-        </h2>
-        <div className="mt-2 h-1 w-20 bg-teal-500 mx-auto"></div>
-      </div>
+    <section id="about" className="py-20 bg-gray-900">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            About <span className="text-teal-500">Me</span>
+          </h2>
+          <div className="mt-2 h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto rounded-full"></div>
+        </div>
 
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-16 items-center md:items-start justify-center">
           {/* Profile Image - Always Visible */}
-          <div className="md:w-1/3">
-            <div className="sticky top-24">
-              <div className="relative group">
+          <div className="md:w-2/5 md:pl-4">
+            <div className="sticky top-28">
+              <div className="relative group max-w-[400px] mx-auto">
                 <div className="absolute -inset-1 bg-gradient-to-r from-teal-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200" />
                 <div className="relative aspect-square rounded-lg overflow-hidden">
                   <img
@@ -37,7 +37,7 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="md:w-2/3">
+          <div className="md:w-3/5 md:pr-4">
             {/* Navigation Tabs */}
             <div className="flex justify-start mb-8 space-x-4">
               {[

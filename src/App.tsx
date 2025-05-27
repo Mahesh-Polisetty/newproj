@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
+import SocialLinks from './components/SocialLinks';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import SkillsSection from './components/SkillsSection';
 import ServicesSection from './components/ServicesSection';
 import PortfolioSection from './components/PortfolioSection';
 import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   useEffect(() => {
     // Update document title
-    document.title = "MD RIEAD MIA | Frontend Developer Portfolio";
+    document.title = "Mahesh Polisetty | Portfolio";
 
     // Update favicon
     const existingFavicon = document.querySelector("link[rel='icon']");
@@ -24,13 +25,13 @@ function App() {
   return (
     <div className="bg-gray-900 text-white font-sans overflow-x-hidden">
       <Navbar />
+      <SocialLinks />
       <HeroSection />
       <AboutSection />
       <SkillsSection />
       <ServicesSection />
       <PortfolioSection />
       <ContactSection />
-      <Footer />
       <ScrollToTopButton />
     </div>
   );

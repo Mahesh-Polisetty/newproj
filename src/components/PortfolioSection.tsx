@@ -112,88 +112,103 @@ const PortfolioSection: React.FC = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-32 bg-gray-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            My <span className="text-teal-400">Projects</span>
-          </h2>
-          <div className="mt-2 h-1 w-20 bg-teal-500 mx-auto"></div>
-          <p className="mt-4 text-gray-400 max-w-xl mx-auto">
-            Explore my recent projects and see how I've helped clients achieve their goals with beautiful, 
-            functional web solutions.
+    <section id="portfolio" className="py-24 bg-gray-900 relative overflow-hidden">
+      {/* Background grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      {/* Radial gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Featured <span className="text-teal-500">Projects</span></h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto mb-4 rounded-full"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Explore my latest projects showcasing my skills in machine learning, full-stack development, and data analysis.
           </p>
         </div>
         
-        <div className="flex justify-center space-x-6 mb-16">
-          <div className="inline-flex flex-wrap justify-center gap-2 p-1 bg-gray-700/50 rounded-lg">
-            {categories.map((category) => (
-              <button
-                key={category.value}
-                onClick={() => setActiveCategory(category.value)}
-                className={`px-4 py-2 rounded-md transition-all duration-300 ${
-                  activeCategory === category.value
-                    ? 'bg-teal-500 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-700'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <button
+            onClick={() => setActiveCategory('all')}
+            className={`px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
+              activeCategory === 'all'
+                ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg shadow-teal-500/25'
+                : 'bg-gray-800/80 backdrop-blur-sm text-gray-400 hover:bg-gray-700/80 hover:text-white'
+            }`}
+          >
+            All
+          </button>
+          {categories.slice(1).map((category) => (
+            <button
+              key={category.value}
+              onClick={() => setActiveCategory(category.value)}
+              className={`px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
+                activeCategory === category.value
+                  ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg shadow-teal-500/25'
+                  : 'bg-gray-800/80 backdrop-blur-sm text-gray-400 hover:bg-gray-700/80 hover:text-white'
+              }`}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <div 
-              key={project.id} 
-              className="group bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 animate-fadeIn"
-            >
-              <div className="relative overflow-hidden h-56">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
-                  <div className="flex space-x-4">
-                    {project.demoLink && (
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
-                        title="Live Demo"
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                    <a
-                      href={project.codeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-colors"
-                      title="View Code"
-                    >
-                      <Github size={18} />
-                    </a>
-                  </div>
+            <div key={project.id} className="card group hover:transform hover:scale-[1.02] transition-all duration-300">
+              <div className="relative group overflow-hidden rounded-lg shadow-lg bg-gray-800 border border-gray-700/50">
+                <div className="relative aspect-video overflow-hidden">
+                  {project.title.toLowerCase().includes('medicall') && (
+                    <div className="absolute top-4 right-4 z-20 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-sm font-bold py-1 px-3 rounded-full shadow-lg flex items-center gap-2 transform hover:scale-105 transition-transform duration-300">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 2a1 1 0 0 1 .78.375l2.234 2.79a1 1 0 0 0 .654.375l3.162.264a1 1 0 0 1 .553 1.704l-2.393 2.195a1 1 0 0 0-.31.748l.264 3.162a1 1 0 0 1-1.45 1.054L10 13.291l-2.89 1.376a1 1 0 0 1-1.45-1.054l.264-3.162a1 1 0 0 0-.31-.748L3.22 7.508a1 1 0 0 1 .553-1.704l3.162-.264a1 1 0 0 0 .654-.375L9.22 2.375A1 1 0 0 1 10 2z" clipRule="evenodd" />
+                      </svg>
+                      Winner
+                    </div>
+                  )}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
+              <div className="p-6 relative">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-teal-500 transition-colors duration-300">{project.title}</h3>
+                <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-gray-800 text-xs text-gray-300 rounded"
+                      className="px-3 py-1 bg-gray-700/50 backdrop-blur-sm text-gray-300 rounded-full text-sm
+                      hover:bg-teal-500/20 hover:text-teal-300 transition-all duration-300"
                     >
                       {tech}
                     </span>
                   ))}
+                </div>
+                <div className="flex gap-4">
+                  {project.demoLink && (
+                    <a
+                      href={project.demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary !py-2 flex items-center gap-2 text-sm"
+                    >
+                      <ExternalLink size={16} />
+                      Live Demo
+                    </a>
+                  )}
+                  <a
+                    href={project.codeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary !py-2 flex items-center gap-2 text-sm"
+                  >
+                    <Github size={16} />
+                    View Code
+                  </a>
                 </div>
               </div>
             </div>

@@ -54,9 +54,9 @@ const ServicesSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            My <span className="text-teal-400">Professional Experience</span>
+            My <span className="text-teal-500">Experience</span>
           </h2>
-          <div className="h-1 w-24 bg-teal-500 mx-auto mb-8"></div>
+          <div className="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto mb-8 rounded-full"></div>
           <p className="text-gray-400 max-w-3xl mx-auto text-lg mb-4 font-bold">
             Over 2 years of experience in healthcare software development at CGI-CIGNA, specializing in enterprise applications and API development
           </p>
